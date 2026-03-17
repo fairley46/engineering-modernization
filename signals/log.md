@@ -1,6 +1,6 @@
 # Signals Log
 
-Rolling signals from the AI engineering landscape, filtered for relevance to our modernization work. Updated each digest run. Raw digests are in `digests/`.
+Rolling signals from the AI engineering landscape, filtered for relevance to our modernization work. Updated each digest run. Raw digest files are in this same folder, named by date.
 
 ---
 

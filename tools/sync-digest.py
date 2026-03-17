@@ -3,10 +3,10 @@
 sync-digest.py
 
 Runs the AI digest tool, copies the output to this repo, extracts relevant
-signals using Claude, updates docs/signals.md, and commits everything.
+signals using Claude, updates signals/log.md, and commits everything.
 
 Usage:
-    python3 scripts/sync-digest.py
+    python3 tools/sync-digest.py
 
 Requirements:
     pip install anthropic
@@ -50,7 +50,7 @@ def run_digest():
 
 def copy_to_repo(digest_path):
     """Copy the digest into digests/YYYY-MM-DD.md in the repo."""
-    dest = os.path.join(REPO_DIR, "digests", f"{DATE_STR}.md")
+    dest = os.path.join(REPO_DIR, "signals", f"{DATE_STR}.md")
     os.makedirs(os.path.dirname(dest), exist_ok=True)
 
     with open(digest_path) as f:
@@ -102,7 +102,7 @@ Output only the signals, no preamble. Use today's date header: ## {DATE_STR}"""
 
 def update_signals_log(new_signals):
     """Prepend new signals to docs/signals.md."""
-    signals_path = os.path.join(REPO_DIR, "docs", "signals.md")
+    signals_path = os.path.join(REPO_DIR, "signals", "log.md")
 
     header = """# Signals Log
 
@@ -124,13 +124,13 @@ Rolling signals from the AI engineering landscape, filtered for relevance to our
     with open(signals_path, "w") as f:
         f.write(updated)
 
-    print(f"Updated {signals_path}")
+    print(f"Updated signals/log.md")
 
 
 def commit_and_push():
     """Stage new files and commit."""
     os.chdir(REPO_DIR)
-    subprocess.run(["git", "add", f"digests/{DATE_STR}.md", "docs/signals.md"], check=True)
+    subprocess.run(["git", "add", f"signals/{DATE_STR}.md", "signals/log.md"], check=True)
     subprocess.run(
         ["git", "commit", "-m", f"digest: signals from {DATE_STR}"],
         check=True
