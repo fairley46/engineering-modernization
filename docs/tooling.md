@@ -76,6 +76,8 @@ Norms for how AI fits into engineering work, not left to individual interpretati
 - Verification requirements that do not get skipped because AI wrote the first draft
 - A way to capture repeated AI use cases and turn them into tested, shared tools rather than everyone prompting individually
 
+Note: this is the one capability area where a ready-to-adopt tool exists that directly addresses the gap. See Superpowers in the tooling section below.
+
 ### Human sustainability
 
 A delivery system that does not depend on heroics to function.
@@ -97,6 +99,13 @@ Tool concepts organized by the capability areas above. For each one: what it doe
 ### Tier 1: The gap between writing code and safely operating it
 
 These are the highest-leverage tools. They address the most direct cause of the delivery gap.
+
+**Superpowers (AI-era engineering discipline)**
+What it is: a structured workflow plugin for Claude Code and other coding agents. It enforces a sequence the agent follows automatically: spec and brainstorm before writing code, detailed implementation plan, subagent-driven execution with TDD enforced, code review gates between tasks, and clean branch management on finish.
+Why it matters: most AI coding chaos comes from agents (and engineers) skipping the spec, skipping tests, and skipping review. Superpowers makes those non-optional without requiring engineers to police it themselves. The skills trigger automatically.
+What it does not cover: everything after the merge. CI, deployment verification, observability, rollback, governance -- none of that is in scope. This is a developer loop tool, not a delivery system tool. Adopting it raises code quality at the point of creation; it does not improve incident rate or MTTR on its own.
+Build vs. adopt: adopt. This is a solved category. The real work is making it your standard: deciding which skills to enforce, adding any skills specific to your context (for example, a skill that checks production readiness requirements before a branch is finished), and ensuring new engineers install it as part of onboarding.
+Source: [github.com/obra/superpowers](https://github.com/obra/superpowers)
 
 **Change Readiness Reviewer**
 Input: a PR, ticket, or design doc.
