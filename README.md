@@ -13,8 +13,21 @@ This repo is one place for the engineering team to understand what that means an
 | [Processes](./research/processes.md) | The six capability areas of a mature AI-era delivery system — safe change, runtime confidence, guardrails, platform leverage, AI discipline, and human sustainability. |
 | [Tooling](./research/tooling.md) | What to build or adopt, organized by capability area and tier. For tech leads and platform thinkers. |
 | [Platform Strategy](./research/platform-strategy.md) | How to govern the tools teams build with AI — the two-speed model, promotion pipeline, lifecycle tiers, and using AI to govern AI-built tools. For engineering leaders and executives. |
-| [Agentic Platform Access](./research/agentic-platform-access.md) | How AI agents access and operate platform infrastructure — the layer model, three agent archetypes, telemetry requirements, golden paths, and governance. For platform engineering teams building or operating a cloud-like environment. |
 | [Signals Log](./signals/log.md) | Rolling signals from the AI engineering landscape, filtered for relevance to our work. Updated each digest run. |
+
+---
+
+**Agentic Platform Access** — How AI agents access and operate platform infrastructure. For platform engineering teams building or operating a cloud-like environment.
+
+| Document | What it covers |
+| --- | --- |
+| [Overview](./research/agentic-platform-overview.md) | Stack diagram, access model, the API as governance boundary. Start here. |
+| [Prerequisites](./research/agentic-prerequisites.md) | The 10 things that must exist before any agent operates safely. |
+| [Agent Archetypes](./research/agentic-agent-archetypes.md) | Consumer, Operator, and Support agents — scope, authority, and governance per archetype. |
+| [Identity and Authorization](./research/agentic-identity-and-authorization.md) | Credential model, Least Privilege vs. Least Agency, policy-as-code enforcement. |
+| [Threat Model](./research/agentic-threat-model.md) | Prompt injection, blast radius tiers, OWASP and CISA guidance. |
+| [Telemetry](./research/agentic-telemetry.md) | Unified event schema, what each layer emits, agent action log. |
+| [Build Sequence](./research/agentic-build-sequence.md) | What to build first and possible solution shapes. |
 
 ---
 
