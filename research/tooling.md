@@ -1,14 +1,12 @@
 # Tooling in the AI Era
 
-This document covers three things: how to think about tooling, what our delivery system needs to be capable of, and what we should build or adopt to get there.
+Tool concepts organized by delivery capability area. For each one: what it does, why it matters, and whether to build or adopt.
+
+For the capability areas these tools support, see [processes.md](./processes.md). For governing the tools teams build themselves, see [platform-strategy.md](./platform-strategy.md).
 
 ---
 
-## How to think about tooling in the AI era
-
-Tools are not the answer by themselves. The question is whether a given tool reduces cognitive load, increases system reliability, or removes manual toil. If it does none of those things, it is noise.
-
-A few principles before we get into specifics:
+## A few principles before the catalog
 
 **Golden paths beat bespoke solutions.**
 The best tool is the one the team actually uses, consistently. An opinionated standard that 90% of engineers follow is worth more than a flexible framework that everyone implements differently.
@@ -17,110 +15,34 @@ The best tool is the one the team actually uses, consistently. An opinionated st
 If engineers have to leave their normal process to get value from a tool, most will not use it. Build or choose tools that meet engineers where they are.
 
 **Adopt when the category is solved. Build when the problem is specific to your context.**
-If something is a commodity problem -- secrets management, container scanning, basic CI -- adopt a proven solution and move on. Build when the problem requires your data, your context, or your specific constraints. Build versus adopt is a resourcing decision, not a pride decision.
+If something is a commodity problem — secrets management, container scanning, basic CI — adopt a proven solution and move on. Build when the problem requires your data, your context, or your specific constraints. Build versus adopt is a resourcing decision, not a pride decision.
 
 **Do not automate dysfunction.**
 If a process is broken, automating it makes it worse faster. Fix the process first, then automate it.
 
 ---
 
-## How our processes need to work
-
-Six capability areas that define a mature AI-era delivery system. For each one, the question is: do we have this, is it trusted, and does it happen automatically?
-
-### Safe change
-
-The ability to ship changes without fear of irreversible damage.
-
-- CI pipelines that engineers trust and that fail for real reasons, not flakiness
-- Test tiers with clear intent: unit tests catch logic errors, integration tests catch contract failures, end-to-end tests catch user-visible regressions
-- Deployment verification: something checks that the deployment worked before traffic shifts
-- Rollback automation: fast, tested, not a manual process
-- Feature flags and canary releases for changes that carry risk
-- Change audit trail: who changed what, when, and why
-
-Without this layer, faster code creation directly increases production incident rate. This is what the data shows.
-
-### Runtime confidence
-
-The ability to know what is happening in production without manual investigation.
-
-- Logs, metrics, and traces as defaults for every service -- not optional
-- SLOs or clear service health expectations per service
-- Dependency visibility: does this service know what it depends on and whether those dependencies are healthy?
-- Incident feedback loops: production problems surface back into engineering as work, not just postmortems
-- Standard production-readiness checks before a service goes live
-
-### Guardrails and governance
-
-Controls that are built into the workflow, not added after the fact.
-
-- Policy-as-code: compliance and security rules live in version control and run in CI
-- Secrets handling standards that do not rely on engineers memorizing rules
-- Dependency and container scanning on every build
-- Environment promotion rules: not everything can go everywhere
-- Lightweight architecture review paths for changes that have broad blast radius
-
-### Platform leverage
-
-Reusable infrastructure that makes the right thing the easy thing.
-
-- Golden path templates: opinionated starters for common workload types
-- Service scaffolding: new services start with CI, observability, policy, and docs wired in
-- Standard repo patterns that teams do not have to reinvent
-- Reusable infrastructure modules for common patterns
-- Documentation that engineers will actually use -- short, opinionated, and current
-
-### AI-era engineering discipline
-
-Norms for how AI fits into engineering work, not left to individual interpretation.
-
-- Clear expectations for where AI is useful and where it requires extra scrutiny
-- Review standards for AI-generated code: it is code, treat it like code
-- Verification requirements that do not get skipped because AI wrote the first draft
-- A way to capture repeated AI use cases and turn them into tested, shared tools rather than everyone prompting individually
-
-*Note: this is the one capability area where a ready-to-adopt tool exists that directly addresses the gap. See Superpowers in the tooling section below.*
-
-### Human sustainability
-
-A delivery system that does not depend on heroics to function.
-
-- Visible toil inventory: if we do not know where the repetitive manual work is, we cannot reduce it
-- Burn-down plans for the highest-toil areas
-- Fewer bespoke workflows: standardization reduces cognitive load
-- Better handoffs: the next person on call should not need to track down the person who was on call before them
-- Operating rhythms that assume normal human availability
-
----
-
-## What to build or adopt
-
-Tool concepts organized by the capability areas above. For each one: what it does, why it matters, and whether to build or adopt.
-
----
-
-### Tier 1: The gap between writing code and safely operating it
+## Tier 1: The gap between writing code and safely operating it
 
 These are the highest-leverage tools. They address the most direct cause of the delivery gap.
 
 ---
 
-**Superpowers** *(AI-era engineering discipline -- adopt)*
+**Superpowers** *(AI-era engineering discipline — adopt)*
 
 **What it is:** A structured workflow plugin for Claude Code and other coding agents. It enforces a sequence the agent follows automatically: spec and brainstorm before writing code, detailed implementation plan, subagent-driven execution with TDD enforced, code review gates between tasks, and clean branch management on finish.
 
 **Why it matters:** Most AI coding chaos comes from agents and engineers skipping the spec, skipping tests, and skipping review. Superpowers makes those non-optional without requiring engineers to police it themselves. The skills trigger automatically.
 
-**Scope:** Developer loop only -- spec to merge. Does not cover CI, deployment verification, observability, rollback, or governance. Adopting it raises code quality at the point of creation; it does not improve incident rate or MTTR on its own.
+**Scope:** Developer loop only — spec to merge. Does not cover CI, deployment verification, observability, rollback, or governance. Adopting it raises code quality at the point of creation; it does not improve incident rate or MTTR on its own.
 
-**Build vs. adopt:** Adopt. This is a solved category. The real work is making it your standard: deciding which skills to enforce, adding any skills specific to your context (for example, a skill that checks production readiness requirements before a branch is finished), and ensuring new engineers install it as part of onboarding.
+**Build vs. adopt:** Adopt. This is a solved category. The real work is making it your standard: deciding which skills to enforce, adding any skills specific to your context, and ensuring new engineers install it as part of onboarding.
 
 *Source: [github.com/obra/superpowers](https://github.com/obra/superpowers)*
 
 ---
 
-**Change Readiness Reviewer** *(safe change -- build)*
+**Change Readiness Reviewer** *(safe change — build)*
 
 **What it is:** Takes a PR, ticket, or design doc and outputs: missing test coverage areas, deployment risks, observability gaps, rollback concerns, security and compliance flags, suggested release strategy.
 
@@ -130,7 +52,7 @@ These are the highest-leverage tools. They address the most direct cause of the 
 
 ---
 
-**Golden Path Generator** *(platform leverage -- hybrid)*
+**Golden Path Generator** *(platform leverage — hybrid)*
 
 **What it is:** Engineer describes a workload type. Tool outputs a standardized starter: repo structure, CI pipeline, deployment config, observability hooks, secrets references, policy defaults, docs starter.
 
@@ -140,7 +62,7 @@ These are the highest-leverage tools. They address the most direct cause of the 
 
 ---
 
-**Production Readiness Copilot** *(runtime confidence -- build)*
+**Production Readiness Copilot** *(runtime confidence — build)*
 
 **What it is:** Given a service or change, generates: required dashboards, alert candidates, runbook starter, SLO starter, rollout and rollback plan.
 
@@ -150,23 +72,23 @@ These are the highest-leverage tools. They address the most direct cause of the 
 
 ---
 
-**Upgrade and Modernization Planner** *(platform leverage -- hybrid)*
+**Upgrade and Modernization Planner** *(platform leverage — hybrid)*
 
 **What it is:** Analyzes an app or repo and proposes modernization steps, risk areas, dependency cleanup, test debt, migration phases.
 
 **Why it matters:** Every team has a backlog of "we should update this" that never gets prioritized because no one has time to scope it. This converts legacy debt from vague anxiety into actionable work.
 
-**Build vs. adopt:** Adopt for the analysis layer (dependency scanners, static analysis tools exist); build the synthesis and prioritization layer that connects findings to your risk tolerance.
+**Build vs. adopt:** Adopt for the analysis layer; build the synthesis and prioritization layer that connects findings to your risk tolerance.
 
 ---
 
-### Tier 2: Steering investment and reducing chaos
+## Tier 2: Steering investment and reducing chaos
 
 These tools help the team understand where risk and toil are concentrated.
 
 ---
 
-**PR Risk Scorer** *(safe change -- build)*
+**PR Risk Scorer** *(safe change — build)*
 
 **What it is:** Flags likely risky changes based on blast radius, infrastructure or config changes, authentication touchpoints, test weakness, deployment surface, and historical incident patterns.
 
@@ -176,7 +98,7 @@ These tools help the team understand where risk and toil are concentrated.
 
 ---
 
-**Incident-to-Backlog Translator** *(runtime confidence -- build)*
+**Incident-to-Backlog Translator** *(runtime confidence — build)*
 
 **What it is:** Pulls incident notes, telemetry summaries, and postmortems and generates: problem statement, root cause themes, action items, platform investment ideas, recurring fragility patterns.
 
@@ -186,7 +108,7 @@ These tools help the team understand where risk and toil are concentrated.
 
 ---
 
-**Service Contract Mapper** *(runtime confidence -- hybrid)*
+**Service Contract Mapper** *(runtime confidence — hybrid)*
 
 **What it is:** Reads code, config, and docs and generates: dependencies, external calls, data stores, secrets used, runtime assumptions, ownership questions.
 
@@ -196,7 +118,7 @@ These tools help the team understand where risk and toil are concentrated.
 
 ---
 
-**Toil Miner** *(human sustainability -- build)*
+**Toil Miner** *(human sustainability — build)*
 
 **What it is:** Scans tickets, incidents, and retros and clusters: repetitive manual steps, recurring exceptions, approval bottlenecks, flaky pipeline pain, support hotspots. Recommends automation candidates.
 
@@ -206,7 +128,7 @@ These tools help the team understand where risk and toil are concentrated.
 
 ---
 
-### Tier 3: Multipliers once the foundation is in place
+## Tier 3: Multipliers once the foundation is in place
 
 These depend on having Tier 1 and 2 capabilities working. High value, but not the right starting point.
 
