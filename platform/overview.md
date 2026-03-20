@@ -10,12 +10,12 @@ This section maps out how agents access and operate across a private cloud platf
 
 | Document | What it covers |
 | --- | --- |
-| [Prerequisites](./agentic-prerequisites.md) | The 10 things that must exist before any agent operates safely |
-| [Agent Archetypes](./agentic-agent-archetypes.md) | Consumer, Operator, and Support agents — scope, authority, and governance per archetype |
-| [Identity and Authorization](./agentic-identity-and-authorization.md) | Credential model, Least Privilege vs. Least Agency, policy-as-code enforcement |
-| [Threat Model](./agentic-threat-model.md) | Prompt injection, blast radius, OWASP and CISA guidance |
-| [Telemetry](./agentic-telemetry.md) | Unified event schema, what each layer emits, agent action log |
-| [Build Sequence](./agentic-build-sequence.md) | What to build first, possible solution shapes |
+| [Prerequisites](./prerequisites.md) | The 10 things that must exist before any agent operates safely |
+| [Agent Archetypes](./archetypes.md) | Consumer, Operator, and Support agents — scope, authority, and governance per archetype |
+| [Identity and Authorization](./identity-and-authorization.md) | Credential model, Least Privilege vs. Least Agency, policy-as-code enforcement |
+| [Threat Model](./threat-model.md) | Prompt injection, blast radius, OWASP and CISA guidance |
+| [Telemetry](./telemetry.md) | Unified event schema, what each layer emits, agent action log |
+| [Build Sequence](./build-sequence.md) | What to build first, possible solution shapes |
 
 ---
 

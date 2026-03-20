@@ -16,7 +16,7 @@ Everything else depends on this. Agents that operate before the schema exists pr
 
 **2. Agent identity and credential separation from human access**
 
-Agent credentials are not human credentials. Before any agent touches an API, the credential model must be in place — issued per workload, short-lived, scoped to archetype. See [Identity and Authorization](./agentic-identity-and-authorization.md).
+Agent credentials are not human credentials. Before any agent touches an API, the credential model must be in place — issued per workload, short-lived, scoped to archetype. See [Identity and Authorization](./identity-and-authorization.md).
 
 **3. Blast radius tier classification for every action type**
 
