@@ -124,6 +124,53 @@ The threshold for human-in-the-loop is not just about risk level — it is also 
 
 ---
 
+## Access Model Overview
+
+```mermaid
+graph TD
+    subgraph consumers["Consumer Layer"]
+        team["Engineering Team"]
+        ca["Consumer Agent\n(golden path constrained)"]
+    end
+
+    subgraph plateng["Platform Engineering"]
+        pe["Platform Engineer"]
+        oa["Operator Agent\n(blast radius gated)"]
+        sa["Support Agent\n(context-scoped)"]
+    end
+
+    apigw["API Gateway\nGovernance Boundary"]
+
+    hitl{"Blast radius\nhigh or critical?"}
+
+    subgraph stack["Platform Stack"]
+        pp["Post-Provisioning API"]
+        k8s["Kubernetes"]
+        vm["Virtual Machines"]
+        hv["Hypervisors"]
+        net["Physical / Network"]
+    end
+
+    tel[("Telemetry\nUnified Event Schema")]
+
+    team --> ca
+    ca -->|"approved catalog only"| apigw
+
+    sa -->|"user scope only"| apigw
+
+    oa --> hitl
+    hitl -->|"low / medium\nautonomous"| apigw
+    hitl -->|"high / critical\nrequires approval"| pe
+    pe -->|"approved"| apigw
+    pe -->|"direct access\nhuman only"| stack
+
+    apigw --> pp & k8s & vm & hv & net
+
+    pp & k8s & vm & hv & net & apigw --> tel
+```
+
+---
+
 ## Telemetry by Layer
 
 The disjointed state of observability today — Datadog here, Prometheus there, logs somewhere else — is workable as a starting point. The investment required is not necessarily tool consolidation. It is a **common event schema** that every layer emits to, so that an agent action can be traced from decision to system state change in a single query.
