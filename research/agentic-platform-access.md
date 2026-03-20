@@ -12,6 +12,7 @@ This document lays out the prerequisites, the access model, the agent archetypes
 - [Telemetry by Layer](#telemetry-by-layer)
 - [Golden Paths](#golden-paths)
 - [Governance Model](#governance-model)
+- [Industry Best Practices: Four Things This Platform Needs](#industry-best-practices-four-things-this-platform-needs)
 - [Possible Solution Shapes](#possible-solution-shapes)
 - [What to Build First](#what-to-build-first)
 
@@ -420,6 +421,99 @@ Every agent action must produce a record that answers:
 6. Can this be undone, and how?
 
 This record is not optional. It is the mechanism by which you can answer "what happened" after an incident, demonstrate compliance, and improve the agent's behavior over time.
+
+---
+
+## Industry Best Practices: Four Things This Platform Needs
+
+The following are not opinions. They are convergent patterns across AWS, Azure, GCP, NIST, OWASP, CISA, and the infrastructure automation ecosystem. Each one addresses a gap in how most platform teams approach agentic access.
+
+---
+
+### 1. Least Agency is not the same as Least Privilege — both are required
+
+**The gap:** This document addresses Least Privilege — scoping what an agent can access. It does not address Least Agency — scoping how much freedom an agent has to *act on that access without checking back*.
+
+An agent can have perfectly scoped credentials and still cause damage by acting too autonomously within that scope. These are different failure modes requiring different controls.
+
+OWASP's Top 10 for Agentic Applications 2026 codifies this distinction explicitly. OWASP LLM06 (Excessive Agency) identifies the risk of granting agents more capability or autonomy than necessary — excessive permissions, excessive functionality, or insufficient human oversight. AWS's Well-Architected Generative AI Lens (GENSEC05-BP01) extends this: for Bedrock Agents, execution roles must be scoped not just by archetype but by *specific prompt context* — an agent performing a specific task gets access to only the resources needed for that task, not everything the archetype is theoretically permitted to touch.
+
+**What to add:**
+
+For every agent archetype, define two separate controls:
+
+- **Least Privilege:** what resources and actions the agent's credentials allow
+- **Least Agency:** what the agent is permitted to do autonomously vs. what requires a check-back — defined by action type, blast radius, and confidence threshold
+
+The blast radius tier model in this document governs Least Agency. It needs to be treated as a first-class control, not a governance add-on.
+
+*Sources: [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/), [AWS Well-Architected Generative AI Lens — GENSEC05-BP01](https://docs.aws.amazon.com/wellarchitected/latest/generative-ai-lens/gensec05-bp01.html)*
+
+---
+
+### 2. Short-lived workload identity is the industry standard — long-lived agent keys are the anti-pattern
+
+**The gap:** The prerequisites section says agent credentials must be scoped and revocable. It does not specify the mechanism. The mechanism matters.
+
+AWS, Azure, GCP, and the CNCF's SPIFFE/SPIRE project have all converged on the same answer: **no long-lived credentials for non-human actors**. Tokens are issued per-workload, short-lived, rotate automatically, and are revoked by removing the identity binding — not by rotating a shared secret. A long-lived agent API key that lives in a CI variable or a config file is the credential equivalent of a standing blast radius.
+
+How the major providers implement this:
+
+| Provider | Mechanism | How it works |
+|---|---|---|
+| AWS | IAM Roles + STS | Compute resources assume a role; SDK retrieves short-lived tokens from Instance Metadata Service automatically. IAM Roles Anywhere extends this to hybrid workloads via X.509 certificates. |
+| Azure | Managed Identities | System-assigned or user-assigned identity per resource; Entra ID issues tokens automatically. Workload Identity Federation extends this to external systems (GitHub Actions, Kubernetes) via OIDC token exchange. |
+| GCP | Workload Identity Federation | External OIDC tokens exchanged for short-lived Google OAuth 2.0 tokens via Security Token Service. No service account key files. |
+| Cross-platform | SPIFFE / SPIRE | CNCF standard for workload identity. Issues X.509 SVIDs per workload via cryptographic attestation — verifying *what* a workload is before issuing a credential. Federates into AWS, Azure, and GCP. |
+
+For this platform: agent identities should be workload-bound, not secret-based. Where the post-provisioning API and platform layers currently use long-lived keys for automation, the path forward is to replace them with short-lived tokens tied to attested workload identity.
+
+NIST SP 800-207 (Zero Trust Architecture) mandates that machine identity posture — not just network position — drives access decisions. An agent credential that cannot be traced to a specific, attested workload is not sufficient.
+
+*Sources: [AWS IAM Roles Anywhere](https://aws.amazon.com/iam/roles-anywhere/), [Azure Managed Identities](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview), [GCP Workload Identity Federation](https://cloud.google.com/iam/docs/workload-identity-federation), [SPIFFE](https://spiffe.io/docs/latest/spiffe-about/overview/), [NIST SP 800-207](https://csrc.nist.gov/pubs/sp/800/207/final)*
+
+---
+
+### 3. Policy-as-code is the enforcement layer between policy and reality
+
+**The gap:** This document describes a golden path catalog and an authorization model. It does not describe the mechanism that makes them enforced rather than advisory.
+
+Documentation of what agents are permitted to do is not a control. Policy-as-code is. The industry has converged on evaluating proposed actions against policy *before execution* — at the plan phase, not after. The tools vary by environment:
+
+| Tool | Where it enforces | Enforcement model |
+|---|---|---|
+| **HashiCorp Sentinel** | Terraform Cloud / Enterprise | Hard-mandatory (cannot be bypassed), Soft-mandatory (override requires named approval + audit record), Advisory. Evaluates the Terraform *plan* — proposed state, not current state. |
+| **OPA / Gatekeeper** | Kubernetes admission control, Terraform via Conftest, any API | Rego policies evaluated at request time. Blocks non-compliant resource creation at the Kubernetes API server before the object is written. |
+| **AWS Service Control Policies** | All IAM actions in an AWS Organization | Define the maximum available permissions — no IAM policy in the org can grant what an SCP denies. |
+| **Azure Policy** | All ARM deployments | Deny, audit, or modify resources at creation time, regardless of who or what is deploying. |
+| **GCP Organization Policy** | All GCP resource operations | Constraints applied at project/folder/org level, evaluated before any resource is created or modified. |
+
+For this platform, the golden path catalog needs a policy-as-code enforcement layer. Without it, the catalog describes the path but does not prevent agents from taking a different one. The pattern: every agent action passes through a policy check against the catalog before execution. Actions not in the catalog are denied at the policy layer, not at the agent layer.
+
+Port and Backstage both implement this model for developer self-service: engineers request actions through a governed interface, the interface enforces what is permitted, and the underlying infrastructure APIs are not directly accessible. The same model applies to agents.
+
+*Sources: [HashiCorp Sentinel](https://developer.hashicorp.com/terraform/tutorials/cloud-get-started/policy-quickstart), [OPA with Terraform](https://spacelift.io/blog/open-policy-agent-opa-terraform), [AWS SCPs](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html), [Azure Policy](https://learn.microsoft.com/en-us/azure/governance/policy/overview), [GCP Organization Policy](https://cloud.google.com/resource-manager/docs/organization-policy/overview), [Port Self-Service Actions](https://www.port.io/guide/developer-self-service-actions)*
+
+---
+
+### 4. Prompt injection is an infrastructure-level attack vector
+
+**The gap:** This document treats agents as controlled actors operating within a defined scope. It does not address the attack surface of the agent's *inputs*.
+
+OWASP ASI01 (Agent Goal Hijack) is the highest-ranked risk in the 2026 Agentic Top 10. The attack: an agent that reads external content — a support ticket, a runbook, an API response, a log entry, a user-submitted configuration — can have its objectives redirected by content crafted to look like a legitimate instruction. A support agent that reads a malicious ticket and executes infrastructure commands is not hypothetical. It is the agentic equivalent of command injection, and the blast radius is infrastructure-level.
+
+CISA's April 2024 joint guidance (*Deploying AI Systems Securely*, co-authored with NSA, FBI, NCSC-UK, CCCS, ASD ACSC, NCSC-NZ) specifically calls out prompt injection and indirect context manipulation as attack surfaces for agentic AI deployments.
+
+This creates a class of risk that traditional automation does not have. A Terraform run cannot be redirected by the contents of a ticket. An agent can.
+
+**Controls to add:**
+
+- **Input validation at the agent boundary.** Every external input to an agent — tickets, API responses, user messages, runbook content — is treated as untrusted until parsed and validated. Agents do not execute instructions found in external content; they extract structured data from it and act on that.
+- **Separation between agent reasoning context and agent action context.** An agent can read a ticket to understand a problem. It should not treat the ticket as a source of executable instructions. The action set available to the agent is defined by its authorization model, not by the content it processes.
+- **Output validation before execution.** Before an agent-generated action is submitted to the API, it is validated against the golden path catalog and blast radius tier. An action that was not in scope when the agent was invoked cannot become in scope because of something the agent read.
+- **Audit of agent reasoning inputs.** The agent action log must record not just what the agent did but what inputs it was processing when it made that decision. This is what makes post-incident investigation tractable — and what makes prompt injection attacks detectable.
+
+*Sources: [OWASP Top 10 for Agentic Applications 2026 — ASI01](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/), [CISA: Deploying AI Systems Securely (April 2024)](https://www.cisa.gov/news-events/alerts/2024/04/15/joint-guidance-deploying-ai-systems-securely), [OWASP Top 10 for LLM Applications 2025 — LLM06 Excessive Agency](https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/)*
 
 ---
 
