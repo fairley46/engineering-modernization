@@ -13,6 +13,7 @@ This repo is one place for the engineering team to understand what that means an
 | [Processes](./research/processes.md) | The six capability areas of a mature AI-era delivery system — safe change, runtime confidence, guardrails, platform leverage, AI discipline, and human sustainability. |
 | [Tooling](./research/tooling.md) | What to build or adopt, organized by capability area and tier. For tech leads and platform thinkers. |
 | [Platform Strategy](./research/platform-strategy.md) | How to govern the tools teams build with AI — the two-speed model, promotion pipeline, lifecycle tiers, and using AI to govern AI-built tools. For engineering leaders and executives. |
+| [Agentic Platform Access](./research/agentic-platform-access.md) | How AI agents access and operate platform infrastructure — the layer model, three agent archetypes, telemetry requirements, golden paths, and governance. For platform engineering teams building or operating a cloud-like environment. |
 | [Signals Log](./signals/log.md) | Rolling signals from the AI engineering landscape, filtered for relevance to our work. Updated each digest run. |
 
 ---
