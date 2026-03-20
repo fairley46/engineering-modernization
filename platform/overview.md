@@ -15,6 +15,7 @@ This section maps out how agents access and operate across a private cloud platf
 | [Identity and Authorization](./identity-and-authorization.md) | Credential model, Least Privilege vs. Least Agency, policy-as-code enforcement |
 | [Threat Model](./threat-model.md) | Prompt injection, blast radius, OWASP and CISA guidance |
 | [Telemetry](./telemetry.md) | Unified event schema, what each layer emits, agent action log |
+| [Governance](./governance.md) | Who owns what, the decision model, exception process, and how the model evolves |
 | [Build Sequence](./build-sequence.md) | What to build first, possible solution shapes |
 
 ---

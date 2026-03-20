@@ -32,6 +32,7 @@ How AI agents access and operate platform infrastructure. For platform engineeri
 | [Identity and Authorization](./platform/identity-and-authorization.md) | Credential model, Least Privilege vs. Least Agency, policy-as-code enforcement. |
 | [Threat Model](./platform/threat-model.md) | Prompt injection, blast radius tiers, OWASP and CISA guidance. |
 | [Telemetry](./platform/telemetry.md) | Unified event schema, what each layer emits, agent action log. |
+| [Governance](./platform/governance.md) | Who owns what, the decision model, exception process, and how the model evolves. |
 | [Build Sequence](./platform/build-sequence.md) | What to build first and possible solution shapes. |
 
 ---
