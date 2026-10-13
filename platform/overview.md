@@ -24,7 +24,7 @@ This section maps out how agents access and operate across a private cloud platf
 
 The platform is not one thing. It is a set of distinct layers, each with different operators, different blast radii, and different governance requirements.
 
-```
+```text
 ┌─────────────────────────────────────────────────────┐
 │               Consumer-facing layer                 │
 │   Teams consuming VMs, Kubernetes, software         │
@@ -48,8 +48,7 @@ The platform is not one thing. It is a set of distinct layers, each with differe
 │   Cuts across every layer — metrics, logs, traces,  │
 │   and agent action records                          │
 └─────────────────────────────────────────────────────┘
-```
-
+```text
 The telemetry layer is not at the top or the bottom. It runs through everything. It is the prerequisite for governing everything above it.
 
 ---
@@ -63,6 +62,7 @@ This is not primarily about developer convenience. It is about governance. An ag
 **The principle:** if an action cannot be taken through the API, it cannot be taken by an agent. The API is not just the interface. It is the perimeter.
 
 Consequences of this:
+
 - Every layer of the stack needs an API surface, even if one does not exist today
 - The post-provisioning system is already API-driven — this is the right model to extend
 - Direct access paths (SSH, console, out-of-band management) become human-only by policy
@@ -113,8 +113,7 @@ graph TD
     apigw --> pp & k8s & vm & hv & net
 
     pp & k8s & vm & hv & net & apigw --> tel
-```
-
+```text
 ---
 
 ## The Principle Underneath All of This
@@ -124,3 +123,7 @@ The goal is not to automate everything. The goal is to make every action — hum
 Agents that operate invisibly are not assets. They are risk that has not surfaced yet. The platform investment in agentic access is not primarily in the agents themselves. It is in the telemetry, the API surface, and the governance model that make it safe to let them operate.
 
 Build the governance layer first. Then expand what agents are permitted to do inside it.
+
+---
+
+[Contents](../README.md) · [Platform strategy](../strategy/platform-strategy.md) · [Prerequisites](./prerequisites.md) · [Build sequence](./build-sequence.md)

@@ -9,7 +9,7 @@ For the capability areas these tools support, see [processes.md](./processes.md)
 ## A few principles before the catalog
 
 **Golden paths beat bespoke solutions.**
-The best tool is the one the team actually uses, consistently. An opinionated standard that 90% of engineers follow is worth more than a flexible framework that everyone implements differently.
+The best tool is the one the team actually uses, consistently. An opinionated standard that 90% of engineers follow is worth more than a flexible framework that everyone implements differently. <!-- TODO: source -->
 
 **The right tool integrates into the workflow.**
 If engineers have to leave their normal process to get value from a tool, most will not use it. Build or choose tools that meet engineers where they are.
@@ -171,3 +171,7 @@ These depend on having Tier 1 and 2 capabilities working. High value, but not th
 In the AI era, our job is not to help engineers write more code. Our job is to help the organization absorb more change safely.
 
 Every tool decision should be evaluated against that goal. If a tool does not make the delivery system more reliable, more observable, or easier to operate, it is not moving us forward.
+
+---
+
+[Contents](../README.md) · [Processes](./processes.md) · [Platform strategy](./platform-strategy.md) · [Industry data](./industry-data.md)

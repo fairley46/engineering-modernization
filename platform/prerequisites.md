@@ -4,7 +4,7 @@ These are not nice-to-haves. Agents operating without them are not governed — 
 
 ---
 
-### 1. Clear product definition
+## 1. Clear product definition
 
 The platform needs a clear, written definition of what it is, what it offers, and where its boundaries are. Without this, there is no basis for defining what agents are permitted to do, what consumers can request, or what falls outside the platform entirely.
 
@@ -12,7 +12,7 @@ This means: what services are offered, at what SLA, with what constraints, and w
 
 ---
 
-### 2. APIs abstracting each layer
+## 2. APIs abstracting each layer
 
 Every layer of the stack must have an API surface before agents can safely interact with it. Not partial coverage — every action that an agent might take needs to be reachable through a controlled, authenticated, observable API call.
 
@@ -22,7 +22,7 @@ This is the foundation everything else is built on.
 
 ---
 
-### 3. Shared responsibility model
+## 3. Shared responsibility model
 
 A clear, written delineation of what the platform owns and what the consumer owns. This governs where agent authority ends and consumer responsibility begins — and it is the document you point to when that line is disputed.
 
@@ -32,7 +32,7 @@ Without this, agents will be asked to take actions that are ambiguously owned, a
 
 ---
 
-### 4. Definition of done
+## 4. Definition of done
 
 For every agent action type, a definition of what "done" means — not just that the API call succeeded, but what system state constitutes a successful outcome, and what state constitutes a failure requiring remediation.
 
@@ -40,7 +40,7 @@ This is what agents use to determine whether to proceed, retry, or escalate. Wit
 
 ---
 
-### 5. Agent identity and credential model
+## 5. Agent identity and credential model
 
 Agent credentials are not human credentials. Before any agent touches an API, the following must be defined:
 
@@ -53,7 +53,7 @@ An agent credential that is too broad, or that cannot be revoked quickly, is a b
 
 ---
 
-### 6. Agent authorization model
+## 6. Agent authorization model
 
 Identity tells you who the agent is. Authorization tells you what it is permitted to do. These are separate systems.
 
@@ -68,7 +68,7 @@ This is the enforcement mechanism behind the golden path catalog. Without it, th
 
 ---
 
-### 7. Common event schema ratified and adopted
+## 7. Common event schema ratified and adopted
 
 The telemetry schema needs to exist, be agreed upon, and be adopted by every API layer before agents go live. Not after.
 
@@ -78,7 +78,7 @@ The schema is a prerequisite, not a follow-on project.
 
 ---
 
-### 8. Blast radius classification for every cataloged action
+## 8. Blast radius classification for every cataloged action
 
 The governance tiers (low / medium / high / critical) only work if every action in the golden path catalog has been classified before agents begin using it. Without this, the governance model has no input data and every decision either defaults to autonomous (unsafe) or defaults to human approval (useless).
 
@@ -86,7 +86,7 @@ Classification does not need to be perfect on day one — it needs to be conserv
 
 ---
 
-### 9. Incident response and rollback procedures for agent-caused changes
+## 9. Incident response and rollback procedures for agent-caused changes
 
 Before agents operate, you need defined answers to:
 
@@ -99,7 +99,7 @@ This must exist before the first agent is deployed, not after the first incident
 
 ---
 
-### 10. Escalation paths and on-call ownership defined
+## 10. Escalation paths and on-call ownership defined
 
 Every human-in-the-loop gate needs somewhere to route. Before agents operate:
 
@@ -108,3 +108,7 @@ Every human-in-the-loop gate needs somewhere to route. Before agents operate:
 - Who is the on-call owner for agent-caused incidents at each layer?
 
 If these paths are undefined, the human gates become bottlenecks or get bypassed. The escalation model is not a process question — it is a prerequisite for the governance model to function.
+
+---
+
+[Contents](../README.md) · [Platform overview](./overview.md) · [Identity and authorization](./identity-and-authorization.md) · [Build sequence](./build-sequence.md)

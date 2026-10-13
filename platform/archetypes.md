@@ -9,6 +9,7 @@ Agents operating on this platform are not one thing. There are three distinct ar
 **Who it serves:** Engineering teams consuming the platform — requesting VMs, Kubernetes clusters, software installations, running post-provisioning jobs.
 
 **What it can do:**
+
 - Provision resources within approved quotas and configurations
 - Rerun post-provisioning jobs
 - Install software from the approved catalog
@@ -16,6 +17,7 @@ Agents operating on this platform are not one thing. There are three distinct ar
 - Follow golden paths defined by platform engineering
 
 **What it cannot do:**
+
 - Touch resources owned by another team
 - Install software not in the approved catalog
 - Modify infrastructure configuration
@@ -39,8 +41,7 @@ graph LR
     ca -->|"check scope"| catalog
     catalog -->|"approved actions only"| apigw
     apigw --> pp & k8s & vm
-```
-
+```text
 ---
 
 ## 2. Platform Operator Agent
@@ -48,6 +49,7 @@ graph LR
 **Who it serves:** Platform engineering — the team that builds and operates the infrastructure.
 
 **What it can do:**
+
 - Respond to alerts and degraded system states
 - Diagnose node, VM, and network issues
 - Trigger remediation actions (restart services, drain nodes, reroute traffic)
@@ -79,8 +81,7 @@ graph TD
     hitl --> pe
     pe -->|"approved"| apigw
     autonomous --> apigw
-```
-
+```text
 ---
 
 ## 3. Support Agent
@@ -88,11 +89,13 @@ graph TD
 **Who it serves:** Any user with a device, a broken environment, or a question that would previously have generated a ticket.
 
 **What it can do:**
+
 - Query the state of a user's device or environment
 - Attempt known self-healing actions (reinstall an agent, reconfigure a network profile, rotate a credential)
 - Escalate to a human with full context already attached — no more "please describe your issue" after a 30-minute diagnosis
 
 **What it cannot do:**
+
 - Make changes to infrastructure outside the requesting user's scope
 - Access another user's device or data
 - Escalate silently — every escalation includes a full context record
@@ -117,8 +120,7 @@ graph TD
     resolve -->|"yes"| selfheal
     resolve -->|"no"| escalate
     escalate --> human
-```
-
+```text
 ---
 
 ## Archetype Comparison
@@ -131,3 +133,7 @@ graph TD
 | **Human gate trigger** | Out-of-catalog request | High/Critical blast radius | Cannot resolve |
 | **Key input** | Team intent | Alerts and degraded state | User issue report |
 | **Key output** | Resource provisioned | System remediated | Issue resolved or escalated with context |
+
+---
+
+[Contents](../README.md) · [Platform overview](./overview.md) · [Threat model](./threat-model.md) · [Identity and authorization](./identity-and-authorization.md)

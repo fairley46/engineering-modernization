@@ -6,6 +6,22 @@ This repo is one place for the engineering team to understand what that means an
 
 ---
 
+## Contents
+
+Read in this order if you are new here.
+
+1. [Manifesto](./MANIFESTO.md) — beliefs and the bar for modernization
+2. [Industry data](./strategy/industry-data.md) — curated research on the delivery gap
+3. [Processes](./strategy/processes.md) — six capability areas of a mature delivery system
+4. [Tooling](./strategy/tooling.md) — what to build or adopt by capability and tier
+5. [Platform strategy](./strategy/platform-strategy.md) — governing tools teams build with AI
+6. [Platform overview](./platform/overview.md) — how agents access and operate the platform
+7. [Signals log](./signals/log.md) — rolling landscape signals filtered for this work
+
+Relative links below map the same material by section.
+
+---
+
 ## Strategy
 
 The "why and what" layer — research, principles, and organizational patterns.
@@ -42,6 +58,7 @@ How AI agents access and operate platform infrastructure. For platform engineeri
 | Document | What it is |
 | --- | --- |
 | [Signals Log](./signals/log.md) | Rolling signals from the AI engineering landscape, filtered for relevance to our work. Updated each digest run. |
+| [2026-03-17 digest](./signals/2026-03-17.md) | Raw digest for that run. |
 
 ---
 

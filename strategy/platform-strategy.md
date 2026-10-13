@@ -38,6 +38,7 @@ The operating principle: **do not stop tool creation. Manage the path from exper
 ### 1. Let teams build locally first
 
 Teams should be free to create:
+
 - Agent-based automations
 - Lightweight scripts and utilities
 - Internal workflow apps
@@ -49,10 +50,9 @@ This is where AI provides the most leverage. It lowers the cost of experimentati
 
 Every useful tool should have a visible path from:
 
-```
+```text
 Personal / team experiment → reviewed shared tool → enterprise-supported asset
-```
-
+```text
 A tool moves up only when it meets defined criteria:
 
 - Demonstrated business value
@@ -152,3 +152,7 @@ The answer is not less autonomy. The answer:
 **The mechanism:** An internal developer platform or app catalog that registers, validates, classifies, and promotes tools — with AI assisting both the creation and the governance.
 
 **The principle:** Do not centralize creation. Centralize visibility, validation, and the path to trust.
+
+---
+
+[Contents](../README.md) · [Processes](./processes.md) · [Tooling](./tooling.md) · [Platform overview](../platform/overview.md)

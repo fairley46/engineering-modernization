@@ -44,7 +44,7 @@ Generative AI improves software engineering productivity by 20-45% depending on 
 
 Elite performers deploy multiple times per day. AI adoption is associated with faster code review and better documentation practices.
 
-*Source: [DORA 2024 Report](https://dora.dev/guides/dora-metrics-four-keys/)*
+*Source: [DORA 2024 Report](https://dora.dev/research/2024/dora-report/)*
 
 ---
 
@@ -71,7 +71,7 @@ This is the most directly relevant data set. Key numbers for teams with heavy AI
 - 36% of developer time still goes to repetitive manual work
 - 69% say slow or unreliable CI/CD contributes to burnout
 
-*Source: Harness / Coleman Parkes State of DevOps Modernization 2026*
+*Source: [Harness / Coleman Parkes State of DevOps Modernization 2026](https://www.harness.io/state-of-modernization-2026)*
 *Methodology: vendor-sponsored survey. The direction of these findings is consistent with DORA and other independent research, but self-reported numbers should be read as indicators, not precise measurements.*
 
 ---
@@ -80,7 +80,7 @@ This is the most directly relevant data set. Key numbers for teams with heavy AI
 
 Higher AI adoption is associated with better documentation and code review speed, but also reduced delivery stability and worse burnout outcomes in organizations without strong delivery foundations.
 
-*Source: DORA 2024 Report (dora.dev)*
+*Source: [DORA 2024 Report](https://dora.dev/research/2024/dora-report/)*
 
 > AI amplifies the existing system. If the system is weak, AI makes it weaker.
 
@@ -90,7 +90,7 @@ Higher AI adoption is associated with better documentation and code review speed
 
 AI is mainly an amplifier of the underlying delivery system. Healthy organizations get more upside from AI. Unhealthy organizations magnify dysfunction.
 
-*Source: DORA 2025 Report (dora.dev)*
+*Source: [DORA 2025 Report](https://dora.dev/research/2025/dora-report/)*
 
 ---
 
@@ -98,7 +98,7 @@ AI is mainly an amplifier of the underlying delivery system. Healthy organizatio
 
 Experienced open-source developers working in their own familiar repos were 19% slower on average when using AI coding tools. The common assumption that AI always speeds things up did not hold for complex, context-heavy work.
 
-*Source: METR 2025 (metr.org)*
+*Source: [METR 2025](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/)*
 *Methodology: controlled study, which makes it more reliable than survey data. The result does not mean AI is useless; it means the gains are not uniform and context matters.*
 
 ---
@@ -107,7 +107,7 @@ Experienced open-source developers working in their own familiar repos were 19% 
 
 GitLab explicitly named what they call the "AI Paradox": coding gets faster, but teams still lose time to fragmented toolchains, quality checks, security steps, handoffs, and lifecycle bottlenecks.
 
-*Source: GitLab 2025 DevSecOps Report*
+*Source: [GitLab 2025 Global DevSecOps Report](https://about.gitlab.com/resources/developer-survey/)*
 
 ---
 
@@ -115,7 +115,7 @@ GitLab explicitly named what they call the "AI Paradox": coding gets faster, but
 
 More developers distrusted AI output than trusted it. Experienced developers were the most skeptical.
 
-*Source: Stack Overflow Developer Survey 2025*
+*Source: [Stack Overflow Developer Survey 2025](https://survey.stackoverflow.co/2025/)*
 
 ---
 
@@ -132,7 +132,7 @@ The human cost of mismatched velocity is documented and significant.
 - 72% say their current ways of working are not sustainable long term
 - 95% of very frequent AI users and 89% of frequent users still rate their DevOps capability as "good or very good" -- despite the outcomes data above
 
-*Source: Harness / Coleman Parkes State of DevOps Modernization 2026*
+*Source: [Harness / Coleman Parkes State of DevOps Modernization 2026](https://www.harness.io/state-of-modernization-2026)*
 
 > That last number matters: teams are confident about their capabilities even when the outcomes data shows otherwise. Confidence and performance are not the same thing.
 
@@ -166,6 +166,11 @@ Developers spend roughly 12% of actual work time on communication and meetings -
 
 Scaling value from AI depends on management practices, operating model, talent, data quality, and adoption discipline -- not tool adoption alone.
 
+<!-- TODO: source -->
 *Source: McKinsey*
 
 > Organizations that invest only in AI tools and not in the surrounding system will not realize the gains they are expecting.
+
+---
+
+[Contents](../README.md) · [Manifesto](../MANIFESTO.md) · [Processes](./processes.md) · [Tooling](./tooling.md)

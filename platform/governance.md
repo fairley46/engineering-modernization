@@ -61,6 +61,7 @@ Teams will need things the catalog doesn't cover. The exception process is how t
 **Step 2: Evaluate.** Platform engineering assesses: is this a gap in the catalog that should be filled? A one-time need that should be handled by a human operator? Or something outside the platform's scope entirely?
 
 **Step 3: Resolve.** One of three outcomes:
+
 - **Add to catalog** — the action is safe, supportable, and likely needed by others. It goes through blast radius classification and enters the catalog. The agent can use it from that point forward.
 - **Human-handled one-off** — the action is legitimate but too specific or too risky for the catalog. A platform engineer handles it directly, with full audit record.
 - **Out of scope** — the action falls outside the platform's defined responsibility. The request is declined with a clear explanation.
@@ -95,6 +96,7 @@ The governance model is not set once. It has a review cycle.
 **Continuous:** blast radius classifications are updated whenever an incident reveals a tier was wrong. No waiting for the cycle.
 
 **Quarterly:**
+
 - Review the exception log. What patterns are there? What belongs in the catalog?
 - Review agent credential inventory. Are there credentials without active owners? Credentials scoped more broadly than necessary?
 - Review the catalog. Are there entries that are no longer supported, or that have never been used? Retire them.
@@ -125,6 +127,7 @@ Shared accountability at a specific boundary is workable. Diffuse accountability
 Governance isn't a state you achieve. It's a signal you can read.
 
 **Signs it's working:**
+
 - Incidents involving agents are rare, and when they happen, the action log explains them within minutes
 - The exception log is short and shrinking — recurring exceptions are moving into the catalog
 - Blast radius classifications are revised after incidents rather than left unchanged
@@ -132,8 +135,13 @@ Governance isn't a state you achieve. It's a signal you can read.
 - No agent credentials exist without a named owning team
 
 **Signs it isn't:**
+
 - Incidents that can't be explained by the action log
 - Exception requests that are approved as one-offs repeatedly for the same pattern
 - Catalog entries that have never been used and nobody remembers why they exist
 - Agent credentials that outlive the project or team that created them
 - Blast radius tiers that haven't changed after an incident that suggested they were wrong
+
+---
+
+[Contents](../README.md) · [Platform overview](./overview.md) · [Telemetry](./telemetry.md) · [Build sequence](./build-sequence.md)
