@@ -39,7 +39,7 @@ The ability to ship changes without fear of irreversible damage.
 - Feature flags and canary releases for changes that carry risk
 - Change audit trail: who changed what, when, and why
 
-Without this layer, faster code creation directly increases production incident rate. This is what the data shows.
+Without this layer, faster code creation directly increases production incident rate. This is what the data shows. <!-- TODO: source -->
 
 ---
 
