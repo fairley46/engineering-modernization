@@ -111,3 +111,7 @@ graph TD
 If agents operate before the schema is in place, their actions will not be observable in a consistent way. Post-hoc schema adoption is possible but expensive — you will be backfilling observability while agents are already operating, which means a gap in auditability during exactly the period when you most need it.
 
 The schema is a prerequisite, not a follow-on project. Every API layer adopts it before the first agent goes live.
+
+---
+
+[Contents](../README.md) · [Platform overview](./overview.md) · [Prerequisites](./prerequisites.md) · [Build sequence](./build-sequence.md)

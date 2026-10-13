@@ -84,3 +84,7 @@ The golden path is the mechanism that makes consumer agents safe to deploy. The 
 - Exceptions require a human approval, not agent workarounds
 
 Teams that go around the golden path today will want to go around it through the agent too. The answer is: the agent does not have that access. If the exception is legitimate, it gets reviewed and either added to the catalog or handled by a human.
+
+---
+
+[Contents](../README.md) · [Platform overview](./overview.md) · [Prerequisites](./prerequisites.md) · [Build sequence](./build-sequence.md)

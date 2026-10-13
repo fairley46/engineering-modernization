@@ -131,3 +131,7 @@ graph TD
 | **Human gate trigger** | Out-of-catalog request | High/Critical blast radius | Cannot resolve |
 | **Key input** | Team intent | Alerts and degraded state | User issue report |
 | **Key output** | Resource provisioned | System remediated | Issue resolved or escalated with context |
+
+---
+
+[Contents](../README.md) · [Platform overview](./overview.md) · [Prerequisites](./prerequisites.md) · [Build sequence](./build-sequence.md)

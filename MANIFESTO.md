@@ -98,3 +98,7 @@ We are not trying to become a team that writes more code.
 We are trying to become a team that can absorb more change without increasing risk, toil, fragility, or burnout.
 
 That is modernization. That is engineering maturity. That is the bar.
+
+---
+
+[Contents](./README.md) · [Industry data](./strategy/industry-data.md) · [Processes](./strategy/processes.md)

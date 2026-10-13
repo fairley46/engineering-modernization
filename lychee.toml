@@ -1,0 +1,24 @@
+#############################
+# Link check (lychee)
+#############################
+
+exclude_path = ["signals/2026-.*\\.md"]
+
+accept = ["200..=299"]
+
+max_concurrency = 8
+timeout = 20
+retry_wait_time = 2
+max_retries = 2
+method = "get"
+include_fragments = "full"
+
+user_agent = "Mozilla/5.0 (compatible; engineering-modernization-linkcheck/1.0; +https://github.com/fairley46/engineering-modernization)"
+
+exclude = [
+  "^mailto:",
+  # McKinsey often fails automated HTTP/2 clients with protocol errors.
+  "^https://www\\.mckinsey\\.com/",
+  # CISA alert page returns 403 to automated clients; citation stays in the docs.
+  "^https://www\\.cisa\\.gov/news-events/alerts/2024/04/15/joint-guidance-deploying-ai-systems-securely$",
+]

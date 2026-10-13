@@ -39,7 +39,7 @@ The ability to ship changes without fear of irreversible damage.
 - Feature flags and canary releases for changes that carry risk
 - Change audit trail: who changed what, when, and why
 
-Without this layer, faster code creation directly increases production incident rate. This is what the data shows.
+Without this layer, faster code creation directly increases production incident rate. This is what the data shows. <!-- TODO: source -->
 
 ---
 
@@ -109,3 +109,7 @@ A delivery system that does not depend on heroics to function.
 We are not trying to ship faster. We are trying to absorb more change without increasing risk, toil, fragility, or burnout. These six capability areas are what that looks like in practice.
 
 For the tools that support these capabilities, see [tooling.md](./tooling.md).
+
+---
+
+[Contents](../README.md) · [Industry data](./industry-data.md) · [Tooling](./tooling.md) · [Platform strategy](./platform-strategy.md)

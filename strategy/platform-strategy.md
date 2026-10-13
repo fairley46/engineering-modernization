@@ -8,7 +8,7 @@ AI has lowered the cost of building tools. It has not lowered the cost of operat
 
 Every engineering team builds tools. Scripts, automations, internal apps, agent-based workflows, data pipelines. That has always been true.
 
-AI has changed the rate. What used to take a sprint now takes an afternoon. The number of tools being created is accelerating faster than any organization can manually track, review, or govern.
+AI has changed the rate. What used to take a sprint now takes an afternoon. <!-- TODO: source --> The number of tools being created is accelerating faster than any organization can manually track, review, or govern.
 
 The result is tool sprawl: duplicate work, unknown dependencies, security gaps, and useful innovations that never travel beyond the team that built them.
 
@@ -152,3 +152,7 @@ The answer is not less autonomy. The answer:
 **The mechanism:** An internal developer platform or app catalog that registers, validates, classifies, and promotes tools — with AI assisting both the creation and the governance.
 
 **The principle:** Do not centralize creation. Centralize visibility, validation, and the path to trust.
+
+---
+
+[Contents](../README.md) · [Processes](./processes.md) · [Tooling](./tooling.md) · [Platform overview](../platform/overview.md)

@@ -124,3 +124,7 @@ The goal is not to automate everything. The goal is to make every action — hum
 Agents that operate invisibly are not assets. They are risk that has not surfaced yet. The platform investment in agentic access is not primarily in the agents themselves. It is in the telemetry, the API surface, and the governance model that make it safe to let them operate.
 
 Build the governance layer first. Then expand what agents are permitted to do inside it.
+
+---
+
+[Contents](../README.md) · [Prerequisites](./prerequisites.md) · [Build sequence](./build-sequence.md)

@@ -171,3 +171,7 @@ These depend on having Tier 1 and 2 capabilities working. High value, but not th
 In the AI era, our job is not to help engineers write more code. Our job is to help the organization absorb more change safely.
 
 Every tool decision should be evaluated against that goal. If a tool does not make the delivery system more reliable, more observable, or easier to operate, it is not moving us forward.
+
+---
+
+[Contents](../README.md) · [Processes](./processes.md) · [Platform strategy](./platform-strategy.md)

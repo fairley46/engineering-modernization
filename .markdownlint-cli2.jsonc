@@ -1,0 +1,13 @@
+{
+  "config": {
+    "extends": ".markdownlint.json"
+  },
+  "globs": [
+    "**/*.md"
+  ],
+  "ignores": [
+    "signals/2026-*.md",
+    ".audit/**",
+    "node_modules/**"
+  ]
+}
