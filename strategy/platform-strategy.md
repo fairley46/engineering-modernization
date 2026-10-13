@@ -52,7 +52,8 @@ Every useful tool should have a visible path from:
 
 ```text
 Personal / team experiment → reviewed shared tool → enterprise-supported asset
-```text
+```
+
 A tool moves up only when it meets defined criteria:
 
 - Demonstrated business value

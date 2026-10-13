@@ -48,7 +48,8 @@ The platform is not one thing. It is a set of distinct layers, each with differe
 │   Cuts across every layer — metrics, logs, traces,  │
 │   and agent action records                          │
 └─────────────────────────────────────────────────────┘
-```text
+```
+
 The telemetry layer is not at the top or the bottom. It runs through everything. It is the prerequisite for governing everything above it.
 
 ---
@@ -113,7 +114,8 @@ graph TD
     apigw --> pp & k8s & vm & hv & net
 
     pp & k8s & vm & hv & net & apigw --> tel
-```text
+```
+
 ---
 
 ## The Principle Underneath All of This

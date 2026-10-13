@@ -74,7 +74,8 @@ outcome              # success | failure | partial
 blast_radius_scope   # team | cluster | zone | platform
 reversible           # true | false
 correlation_id       # ties a chain of related events together
-```text
+```
+
 The tools can be different. The schema has to be the same. This is what makes cross-layer correlation possible — and it is what makes governing agents tractable.
 
 ---
@@ -107,7 +108,8 @@ graph TD
     ca & oa & sa -->|"emit reasoning trace\n+ action record"| schema
     schema --> store
     store --> query & govern
-```text
+```
+
 ---
 
 ## Why Schema Comes Before Agents

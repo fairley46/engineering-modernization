@@ -41,7 +41,8 @@ graph LR
     ca -->|"check scope"| catalog
     catalog -->|"approved actions only"| apigw
     apigw --> pp & k8s & vm
-```text
+```
+
 ---
 
 ## 2. Platform Operator Agent
@@ -81,7 +82,8 @@ graph TD
     hitl --> pe
     pe -->|"approved"| apigw
     autonomous --> apigw
-```text
+```
+
 ---
 
 ## 3. Support Agent
@@ -120,7 +122,8 @@ graph TD
     resolve -->|"yes"| selfheal
     resolve -->|"no"| escalate
     escalate --> human
-```text
+```
+
 ---
 
 ## Archetype Comparison
