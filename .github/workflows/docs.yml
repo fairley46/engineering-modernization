@@ -14,9 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      # Uses .markdownlint-cli2.jsonc (globs + ignores for raw digests).
       - uses: DavidAnson/markdownlint-cli2-action@v19
-        with:
-          globs: "**/*.md"
 
   links:
     name: link check

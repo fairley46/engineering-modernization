@@ -1,7 +1,6 @@
 {
-  "ignores": [
-    "signals/20*.md"
-  ],
+  "globs": ["**/*.md"],
+  "ignores": ["signals/20*.md"],
   "config": {
     "default": true,
     "MD013": false,
