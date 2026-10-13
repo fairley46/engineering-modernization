@@ -1,0 +1,3 @@
+signals/20*.md
+node_modules/
+.audit/
