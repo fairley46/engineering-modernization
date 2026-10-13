@@ -152,3 +152,7 @@ The answer is not less autonomy. The answer:
 **The mechanism:** An internal developer platform or app catalog that registers, validates, classifies, and promotes tools — with AI assisting both the creation and the governance.
 
 **The principle:** Do not centralize creation. Centralize visibility, validation, and the path to trust.
+
+---
+
+[Contents](../README.md) · [Processes](./processes.md) · [Tooling](./tooling.md) · [Platform overview](../platform/overview.md)

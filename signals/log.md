@@ -30,3 +30,7 @@ Connects to: AI-era engineering discipline, how we design agent-assisted tooling
 A top r/MachineLearning thread (226 points) questioned the value of LLM benchmarking papers. Real-world metrics like Rakuten's 2x figure carry more weight with experienced engineers than benchmark scores. This matters for how we evaluate tools before adopting them -- real production signals beat vendor benchmarks.
 Connects to: how we make build vs. adopt decisions, methodology notes in industry-data.md.
 *Source: "[D] What is even the point of these LLM benchmarking papers?" (r/MachineLearning)*
+
+---
+
+[Contents](../README.md) · [Industry data](../strategy/industry-data.md)

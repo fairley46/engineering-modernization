@@ -90,3 +90,7 @@ This record is not optional. It is the mechanism by which you can answer "what h
 | Consumer Agent | Malicious catalog entries, quota bypass attempts | Policy-as-code enforcement at API gateway |
 | Operator Agent | Prompt injection via log content, alerts, or runbook text | Strict input parsing; human gate at High/Critical |
 | Support Agent | Malicious ticket content redirecting agent to execute infrastructure commands | Reasoning/action context separation; output validation |
+
+---
+
+[Contents](../README.md) · [Platform overview](./overview.md) · [Prerequisites](./prerequisites.md) · [Build sequence](./build-sequence.md)

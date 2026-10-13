@@ -108,3 +108,7 @@ Every human-in-the-loop gate needs somewhere to route. Before agents operate:
 - Who is the on-call owner for agent-caused incidents at each layer?
 
 If these paths are undefined, the human gates become bottlenecks or get bypassed. The escalation model is not a process question — it is a prerequisite for the governance model to function.
+
+---
+
+[Contents](../README.md) · [Platform overview](./overview.md) · [Prerequisites](./prerequisites.md) · [Build sequence](./build-sequence.md)

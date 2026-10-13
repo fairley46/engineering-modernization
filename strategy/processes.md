@@ -109,3 +109,7 @@ A delivery system that does not depend on heroics to function.
 We are not trying to ship faster. We are trying to absorb more change without increasing risk, toil, fragility, or burnout. These six capability areas are what that looks like in practice.
 
 For the tools that support these capabilities, see [tooling.md](./tooling.md).
+
+---
+
+[Contents](../README.md) · [Industry data](./industry-data.md) · [Tooling](./tooling.md) · [Platform strategy](./platform-strategy.md)

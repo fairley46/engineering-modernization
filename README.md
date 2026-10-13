@@ -6,9 +6,24 @@ This repo is one place for the engineering team to understand what that means an
 
 ---
 
+## Contents
+
+| Path | Start here if you want |
+| --- | --- |
+| [Manifesto](./MANIFESTO.md) | The beliefs and the bar |
+| [Strategy](#strategy) | Research, capability areas, tooling, and platform governance |
+| [Platform](#platform) | How agents access and operate platform infrastructure |
+| [Signals](#signals) | Rolling landscape notes filtered for this work |
+
+Reading order for the strategy layer: manifesto, then industry data, then processes, then tooling, then platform strategy.
+
+Reading order for the platform layer: [overview](./platform/overview.md), then prerequisites through build sequence in the table below.
+
+---
+
 ## Strategy
 
-The "why and what" layer — research, principles, and organizational patterns.
+The "why and what" layer. Research, principles, and organizational patterns.
 
 | Document | What it is |
 | --- | --- |

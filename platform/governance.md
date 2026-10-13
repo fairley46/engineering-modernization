@@ -137,3 +137,7 @@ Governance isn't a state you achieve. It's a signal you can read.
 - Catalog entries that have never been used and nobody remembers why they exist
 - Agent credentials that outlive the project or team that created them
 - Blast radius tiers that haven't changed after an incident that suggested they were wrong
+
+---
+
+[Contents](../README.md) · [Platform overview](./overview.md) · [Prerequisites](./prerequisites.md) · [Build sequence](./build-sequence.md)
