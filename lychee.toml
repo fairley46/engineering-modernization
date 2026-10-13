@@ -1,0 +1,29 @@
+#############################
+# Link check (lychee)
+#############################
+
+# Exclude raw digest dumps (third-party URLs churn weekly).
+exclude_path = ["signals/2026-.*\\.md"]
+
+# Accept success codes plus common soft blocks from vendor sites.
+accept = [
+  "200..=299",
+  "403",
+  "429",
+]
+
+max_concurrency = 8
+timeout = 20
+retry_wait_time = 2
+max_retries = 2
+method = "get"
+include_fragments = "full"
+
+user_agent = "Mozilla/5.0 (compatible; engineering-modernization-linkcheck/1.0; +https://github.com/fairley46/engineering-modernization)"
+
+exclude = [
+  "^mailto:",
+  # McKinsey often fails automated HTTP/2 clients with protocol errors;
+  # the citation URL itself is intentional and remains in the docs.
+  "^https://www\\.mckinsey\\.com/",
+]
